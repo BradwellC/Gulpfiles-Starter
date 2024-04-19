@@ -1,0 +1,6 @@
+node_modules
+public/Jormungandr/
+babel.config.json
+gulpfile.js
+
+.DS_Store

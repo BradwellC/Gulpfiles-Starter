@@ -1,0 +1,26 @@
+{
+  "name": "gulp-projects",
+  "version": "1.0.0",
+  "description": "Starter SCSS files & scripts",
+  "main": "index.js",
+  "scripts": {
+    "start": "npm i"
+  },
+  "keywords": [],
+  "author": "Jormungandr",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/core": "^7.24.4",
+    "@babel/preset-env": "^7.24.4",
+    "gulp": "^5.0.0",
+    "gulp-babel": "^8.0.0",
+    "gulp-clean-css": "^4.3.0",
+    "gulp-concat": "^2.6.1",
+    "gulp-purgecss": "^6.0.0",
+    "gulp-rename": "^2.0.0",
+    "gulp-sass": "^5.1.0",
+    "gulp-terser": "^2.1.0",
+    "sass": "^1.72.0"
+  },
+  "type": "module"
+}
