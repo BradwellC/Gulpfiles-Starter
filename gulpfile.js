@@ -1,51 +1,47 @@
-import { dest, src, watch, parallel } from 'gulp';
-import babel from 'gulp-babel';
+// import { src, dest, series, watch } from 'gulp';
 
-import * as sass from 'sass';
+import gulp from 'gulp';
+
+const { src, dest, series, watch } = gulp;
+
+// SCSS
 import gulpSass from 'gulp-sass';
+import autoprefixer from 'gulp-autoprefixer';
+import cssMinify from 'gulp-clean-css';
+import * as sass from 'sass';
 const scss = gulpSass(sass);
 
 
-import autoprefixer from 'gulp-autoprefixer';
-import cssMinfy from 'gulp-clean-css';
+// JavaScript
+import jsMinify from 'gulp-terser';
 
+
+// Both 
 import concat from 'gulp-concat';
 import rename from 'gulp-rename';
+
 
 // CSS Gulp
 
 function styles() {
   return src('Library/styles/**/*.scss')
-    .pipe(scss())
-    .pipe(
-      autoprefixer({
-        overrideBrowserslist: ['last 2 versions', '> 1%'], // Adjust the browser support according to your needs
-        cascade: false,
-      })
-    )
-    .pipe(dest('public/css'))
-    .pipe(cssMinfy())
-    .pipe(
-      rename({
-        suffix: '.min',
-      })
-    )
-    .pipe(dest('public/css'));
+    .pipe( scss() )
+    .pipe( autoprefixer( 'Last 2 versions' ) )
+    .pipe(dest('public/css/'))
+    .pipe( cssMinify() )
+    .pipe( rename({
+      suffix: '.min'
+    }) )
+    .pipe(dest('public/css/'))
 }
 
 // JS Gulp
-import jsMinfy from 'gulp-terser';
 
 function scripts() {
-  return src('Library/scripts/**/*.js')
-    .pipe(babel(
-      {
-        presets: ['@babel/preset-env']
-      }
-    ))
+  return src('Library/scripts/**/*.js') 
     .pipe(concat('scripts.js'))
     .pipe(dest('public/js'))
-    .pipe(jsMinfy())
+    .pipe(jsMinify())
     .pipe(
       rename({
         suffix: '.min',
@@ -56,13 +52,8 @@ function scripts() {
 
 // Watch Gulp
 function watchGulp() {
-  watch(
-    [
-      'Library/styles/**/*.scss',
-      'Library/scripts/**/*.js',
-    ],
-    parallel(styles, scripts)
-  );
+  watch('Library/scripts/**/*.js', series(scripts));
+  watch('Library/styles/**/*.scss', series(styles));
 }
 
-export default parallel(styles, scripts, watchGulp);
+export default series(styles, scripts, watchGulp);

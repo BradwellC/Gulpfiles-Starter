@@ -1,0 +1,8 @@
+@font-face {
+  font-family: "Meslo GMNF Bold";
+  src: url("/public/fonts/MesloLGMNF-Bold.woff2") format("woff2"), url("/public/fonts/MesloLGMNF-Bold.woff") format("woff");
+}
+@font-face {
+  font-family: "Meslo GMNF";
+  src: url("/public/fonts/MesloLGMNF-Regular.woff2") format("woff2"), url("/public/fonts/MesloLGMNF-Regular.woff") format("woff");
+}
