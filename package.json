@@ -1,15 +1,8 @@
 {
-  "name": "gulp",
+  "name": "gulp-template",
   "version": "1.0.0",
-  "description": "Gulp start files & logic",
-  "main": "index.js",
-  "scripts": {
-    "start": "npm i",
-    "watch": "sass public/Jormungandr/styles/main.scss public/css/main.css"
-  },
-  "keywords": [],
-  "author": "Jormungandr",
-  "license": "ISC",
+  "description": "Gulp Starting Files & Logic Template",
+  "main": "gulpfile.js",
   "devDependencies": {
     "@babel/core": "^7.24.4",
     "@babel/preset-env": "^7.24.4",
@@ -31,5 +24,11 @@
       ]
     ]
   },
-  "type": "module"
+  "scripts": {
+    "start": "gulp",
+    "build": "gulp build"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
 }
